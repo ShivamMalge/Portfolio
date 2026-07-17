@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowRight, Code2, Globe, Mail } from 'lucide-react'
+import { ArrowRight, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/moving-border'
+import { GithubIcon, LinkedinIcon, LeetCodeIcon } from '@/components/ui/social-icons'
 
 import SplitText from '@/components/ui/split-text'
 
@@ -40,7 +41,7 @@ export function Hero() {
           textAlign="center"
         />
 
-        <p className="text-lg sm:text-xl text-foreground/70 mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg sm:text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">
           Full Stack Software Engineer focused on automating complex technical bottlenecks and architecting scalable,
           user-centric systems with Python, React, and Next.js.
         </p>
@@ -48,7 +49,9 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <Button
             borderRadius="0.75rem"
-            className="text-foreground"
+            containerClassName="w-[200px] h-14"
+            className="text-white flex items-center justify-center w-full h-full text-base font-medium"
+            style={{ width: '200px' }}
             onClick={() =>
               document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
             }
@@ -58,7 +61,9 @@ export function Hero() {
           </Button>
           <Button
             borderRadius="0.75rem"
-            className="text-foreground"
+            containerClassName="w-[200px] h-14"
+            className="text-white flex items-center justify-center w-full h-full text-base font-medium"
+            style={{ width: '200px' }}
             onClick={() =>
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
             }
@@ -70,26 +75,28 @@ export function Hero() {
         {/* Social Links */}
         <div className="flex items-center justify-center gap-4">
           <a
-            href="https://github.com"
+            href="https://github.com/ShivamMalge"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-muted/50 border border-border hover:border-foreground/30 hover:bg-muted transition-all duration-300"
           >
-            <Code2 size={20} className="text-foreground" />
+            <GithubIcon size={20} className="text-foreground" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://leetcode.com/u/ShivamMalge/"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-full bg-muted/50 border border-border hover:border-foreground/30 hover:bg-muted transition-all duration-300"
           >
-            <Globe size={20} className="text-foreground" />
+            <LeetCodeIcon size={20} className="text-foreground" />
           </a>
           <a
-            href="mailto:shivammalge@gmail.com"
+            href="https://www.linkedin.com/in/shivam-malge-12523a293/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="p-3 rounded-full bg-muted/50 border border-border hover:border-foreground/30 hover:bg-muted transition-all duration-300"
           >
-            <Mail size={20} className="text-foreground" />
+            <LinkedinIcon size={20} className="text-foreground" />
           </a>
         </div>
       </div>

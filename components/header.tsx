@@ -20,14 +20,12 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-background/80 backdrop-blur-md border-b border-border'
-          : 'bg-transparent'
+      className={`fixed top-0 w-full z-50 transition-all duration-300 pt-4 px-4 ${
+        isScrolled ? 'py-2' : 'py-4'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold text-foreground">
+      <div className="max-w-7xl mx-auto rounded-2xl bg-background/40 backdrop-blur-xl border border-white/10 shadow-lg px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+        <Link href="/" className="text-2xl font-bold text-white tracking-tighter">
           SM
         </Link>
 
@@ -37,7 +35,7 @@ export function Header() {
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="text-foreground/70 hover:text-foreground transition-colors duration-200 text-sm font-medium"
+              className="text-white/70 hover:text-white transition-colors duration-200 text-sm font-medium"
             >
               {item}
             </a>
@@ -48,7 +46,7 @@ export function Header() {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="md:hidden text-white"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -56,13 +54,13 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-background border-b border-border md:hidden">
-            <div className="flex flex-col items-start gap-4 p-4">
+          <div className="absolute top-full left-0 right-0 mt-2 mx-4 rounded-xl bg-background/80 backdrop-blur-xl border border-white/10 shadow-xl md:hidden overflow-hidden">
+            <div className="flex flex-col items-start p-4">
               {['About', 'Projects', 'Skills', 'Contact'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-foreground/70 hover:text-foreground transition-colors"
+                  className="text-white/70 hover:text-white transition-colors w-full py-3 border-b border-white/10 last:border-0"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
@@ -71,7 +69,7 @@ export function Header() {
             </div>
           </div>
         )}
-      </nav>
+      </div>
     </header>
   )
 }

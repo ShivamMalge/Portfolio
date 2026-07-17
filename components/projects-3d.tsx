@@ -48,31 +48,35 @@ const projects = [
   },
   {
     id: 5,
-    title: 'Upcoming Project 1',
-    description: 'Description for this upcoming project. Stay tuned for updates.',
-    tech: ['Framework', 'Database', 'Language'],
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop',
-    details: 'Detailed information and challenges overcome will be documented here once the project is complete.',
+    title: 'SupportGPT',
+    description:
+      'Multi-tenant AI customer support SaaS that automates ticket resolution using Retrieval-Augmented Generation (RAG).',
+    tech: ['Next.js', 'NestJS', 'FastAPI', 'PostgreSQL', 'Redis', 'pgvector'],
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2560&auto=format&fit=crop',
+    details:
+      'Engineered a scalable microservices architecture. Utilized pgvector for document chunking and vector searches, enabling LLMs to instantly draft highly accurate responses strictly based on isolated organizational data.',
   },
   {
     id: 6,
-    title: 'Upcoming Project 2',
-    description: 'Description for this upcoming project. Stay tuned for updates.',
-    tech: ['Framework', 'Database', 'Language'],
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop',
-    details: 'Detailed information and challenges overcome will be documented here once the project is complete.',
+    title: 'LeadGenius',
+    description:
+      'End-to-end automated pipeline for scraping LinkedIn job postings and auto-dispatching tailored applications.',
+    tech: ['Next.js', 'Node.js', 'TypeScript', 'Playwright', 'SQLite3'],
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2560&auto=format&fit=crop',
+    details:
+      'Built a robust data extraction engine to pull recruiter contact information. Created a seamless UI dashboard to review leads and automatically send highly targeted, AI-tailored emails, streamlining the entire job search process.',
   },
 ]
 
 export function Projects3D() {
   return (
-    <section className="relative py-20 px-4 md:px-8">
+    <section id="projects" className="relative py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <div className="mb-16 flex flex-col items-center text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Featured Projects
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl">
+          <p className="text-white text-lg max-w-2xl">
             A selection of my most impactful work demonstrating full-stack capabilities and innovative problem-solving.
           </p>
         </div>
@@ -80,10 +84,13 @@ export function Projects3D() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 mb-16 justify-items-center">
           {projects.map((project) => (
             <CardContainer key={project.id} className="inter-var h-full w-full">
-              <CardBody className="bg-card relative group/card hover:shadow-2xl hover:shadow-primary/[0.1] border-border w-full h-full rounded-xl p-6 sm:p-8 border transition-all duration-300 flex flex-col [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]">
+              <CardBody className="relative group/card hover:shadow-2xl hover:shadow-primary/[0.1] w-full h-full rounded-xl p-6 sm:p-8 transition-all duration-300 flex flex-col [transform-style:preserve-3d] [&>*]:[transform-style:preserve-3d]">
+                {/* Glassmorphism Background Layer - Separated to preserve 3D effect */}
+                <div className="absolute inset-0 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl pointer-events-none" style={{ transform: "translateZ(0px)" }} />
+
                 <CardItem
                   translateZ="50"
-                  className="text-xl font-bold text-foreground mb-2"
+                  className="text-xl font-bold text-white mb-2"
                 >
                   {project.title}
                 </CardItem>
@@ -91,7 +98,7 @@ export function Projects3D() {
                 <CardItem
                   as="p"
                   translateZ="60"
-                  className="text-foreground/70 text-sm max-w-sm mt-3 mb-2"
+                  className="text-gray-200 text-sm max-w-sm mt-3 mb-2"
                 >
                   {project.description}
                 </CardItem>
@@ -110,14 +117,14 @@ export function Projects3D() {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20"
+                      className="px-2.5 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary-foreground border border-primary/30"
                     >
                       {tech}
                     </span>
                   ))}
                 </CardItem>
 
-                <CardItem translateZ="40" className="text-muted-foreground text-sm mb-6">
+                <CardItem translateZ="40" className="text-gray-300 text-sm mb-6">
                   {project.details}
                 </CardItem>
 

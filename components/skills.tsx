@@ -1,75 +1,70 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import React from 'react'
+import TiltedCard from '@/components/ui/TiltedCard'
 
-const skillCategories = [
-  {
-    name: 'Languages',
-    skills: ['Python', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3'],
-  },
-  {
-    name: 'Frontend',
-    skills: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'shadcn/ui'],
-  },
-  {
-    name: 'Backend & Database',
-    skills: ['Node.js', 'Express.js', 'PostgreSQL', 'MongoDB', 'Prisma ORM'],
-  },
-  {
-    name: 'Tools & APIs',
-    skills: ['Git/GitHub', 'REST APIs', 'GraphQL', 'Chrome DevTools', 'Neon DB'],
-  },
+const skillsData = [
+  { name: 'React', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+  { name: 'Next.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
+  { name: 'TypeScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+  { name: 'JavaScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+  { name: 'Python', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+  { name: 'Node.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+  { name: 'PostgreSQL', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+  { name: 'MongoDB', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
+  { name: 'Tailwind CSS', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
+  { name: 'Express', url: 'https://skillicons.dev/icons?i=express' },
+  { name: 'Git', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+  { name: 'Prisma', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg' },
 ]
 
 export function Skills() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize(); // initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const cardSize = isMobile ? '64px' : '100px';
+  const imgSize = isMobile ? '32px' : '50px';
 
   return (
-    <section id="skills" className="py-24 px-4 bg-background overflow-x-hidden">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">Technical Skills</h2>
-          <p className="text-lg text-foreground/60">
-            Expertise across the full stack with 7+ semesters of hands-on development experience
-          </p>
-        </div>
+    <>
+      <section id="skills" className="py-24 px-4 bg-transparent overflow-x-hidden relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Technical Skills</h2>
+            <p className="text-lg text-white/60">
+              Hover over each technology to interact with it.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillCategories.map((category) => (
-            <div key={category.name} className="p-6 bg-card/40 backdrop-blur-sm rounded-[16px] border border-border/50 h-full flex flex-col hover:border-primary/50 transition-colors duration-300">
-              <h3 className="text-xl font-bold text-foreground mb-4">{category.name}</h3>
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 sm:gap-8 mx-auto justify-items-center w-full max-w-5xl">
+            {skillsData.map((skill) => (
+              <TiltedCard
+                key={skill.name}
+                imageSrc={skill.url}
+                altText={skill.name}
+                captionText={skill.name}
+                containerHeight={cardSize}
+                containerWidth={cardSize}
+                imageHeight={imgSize}
+                imageWidth={imgSize}
+                rotateAmplitude={20}
+                scaleOnHover={1.15}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={false}
+              />
+            ))}
+          </div>
         </div>
-
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8">
-          {[
-            { label: 'GitHub Commits', value: '405+' },
-            { label: 'Projects Built', value: '10+' },
-            { label: 'Years Experience', value: '3+' },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="text-center p-6 rounded-lg border border-border bg-card/50 backdrop-blur-sm"
-            >
-              <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
-              <div className="text-foreground/60">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
