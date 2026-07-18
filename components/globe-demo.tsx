@@ -394,8 +394,23 @@ export default function GlobeDemo() {
     },
   ];
 
+  const [show, setShow] = React.useState(true);
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+    const handleResize = () => {
+      setShow(window.innerWidth >= 768);
+    };
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (!mounted || !show) return null;
+
   return (
-    <div className="hidden md:block relative w-full z-10 overflow-hidden bg-transparent py-16">
+    <div className="relative w-full z-10 overflow-hidden bg-transparent py-16">
       <div className="max-w-7xl mx-auto w-full relative px-4 flex flex-col items-center">
         <motion.div
           initial={{
