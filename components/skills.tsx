@@ -19,9 +19,11 @@ const skillsData = [
 ]
 
 export function Skills() {
+  const [mounted, setMounted] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
+    setMounted(true);
     const handleResize = () => {
       setIsMobile(window.innerWidth < 640);
     };
@@ -30,8 +32,8 @@ export function Skills() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const cardSize = isMobile ? '64px' : '100px';
-  const imgSize = isMobile ? '32px' : '50px';
+  const cardSize = mounted && isMobile ? 70 : 100;
+  const imgSize = mounted && isMobile ? 35 : 50;
 
   return (
     <>
@@ -44,23 +46,31 @@ export function Skills() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 sm:gap-8 mx-auto justify-items-center w-full max-w-5xl">
+          <div 
+            className="mx-auto justify-items-center gap-4 sm:gap-8 w-full max-w-3xl px-4"
+            style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(4, min-content)',
+              justifyContent: 'center'
+            }}
+          >
             {skillsData.map((skill) => (
-              <TiltedCard
-                key={skill.name}
-                imageSrc={skill.url}
-                altText={skill.name}
-                captionText={skill.name}
-                containerHeight={cardSize}
-                containerWidth={cardSize}
-                imageHeight={imgSize}
-                imageWidth={imgSize}
-                rotateAmplitude={20}
-                scaleOnHover={1.15}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={false}
-              />
+              <div key={skill.name}>
+                <TiltedCard
+                  imageSrc={skill.url}
+                  altText={skill.name}
+                  captionText={skill.name}
+                  containerHeight={`${cardSize}px`}
+                  containerWidth={`${cardSize}px`}
+                  imageHeight={`${imgSize}px`}
+                  imageWidth={`${imgSize}px`}
+                  rotateAmplitude={20}
+                  scaleOnHover={1.15}
+                  showMobileWarning={false}
+                  showTooltip={true}
+                  displayOverlayContent={false}
+                />
+              </div>
             ))}
           </div>
         </div>

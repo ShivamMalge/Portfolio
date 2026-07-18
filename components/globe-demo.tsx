@@ -395,8 +395,8 @@ export default function GlobeDemo() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center pt-20 pb-40 min-h-screen md:min-h-[40rem] bg-transparent relative w-full z-10">
-      <div className="max-w-7xl mx-auto w-full relative overflow-visible h-full md:h-[40rem] px-4">
+    <div className="relative w-full z-10 overflow-hidden bg-transparent py-16">
+      <div className="max-w-7xl mx-auto w-full relative px-4 flex flex-col items-center">
         <motion.div
           initial={{
             opacity: 0,
@@ -409,13 +409,17 @@ export default function GlobeDemo() {
           transition={{
             duration: 1,
           }}
-          className="div text-center mb-8 relative z-50 pointer-events-none"
+          className="text-center relative z-50 pointer-events-none mb-4"
         >
-          <h2 className="text-center text-2xl md:text-4xl font-bold text-black dark:text-white mt-8">
+          <h2 className="text-3xl md:text-5xl font-bold text-white">
             Open For Global Remote Internships
           </h2>
         </motion.div>
-        <div className="absolute w-full bottom-0 h-72 md:h-full z-10">
+        
+        {/* Globe Container - explicitly sized, normal document flow */}
+        <div 
+          className="w-full h-[60vh] max-h-[500px] md:h-[75vh] md:max-h-[700px] relative z-10 mt-8" 
+        >
           <World data={sampleArcs} globeConfig={globeConfig} />
         </div>
       </div>
