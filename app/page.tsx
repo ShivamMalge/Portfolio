@@ -5,6 +5,7 @@ import GlobeDemo from '@/components/globe-demo'
 import { Skills } from '@/components/skills'
 import { LiveStats } from '@/components/live-stats'
 import { Contact } from '@/components/contact'
+import { Footer } from '@/components/footer'
 import ScrollFadeBackground from '@/components/ui/scroll-fade-background'
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
         <Skills />
         <LiveStats />
         <Contact />
+        <Footer />
       </div>
     </main>
   )
