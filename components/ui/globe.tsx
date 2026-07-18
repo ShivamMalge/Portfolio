@@ -238,15 +238,30 @@ export function Globe({ globeConfig, data }: WorldProps) {
   return <group ref={groupRef} />;
 }
 
+export function WebGLRendererConfig() {
+  const { gl, size } = useThree();
+
+  useEffect(() => {
+    gl.setPixelRatio(window.devicePixelRatio);
+    gl.setSize(size.width, size.height);
+    gl.setClearColor(0xffffff, 0);
+  }, []);
+
+  return null;
+}
+
 export function World(props: WorldProps) {
   const { globeConfig } = props;
+  const scene = new Scene();
+  scene.fog = new Fog(0xffffff, 400, 2000);
   
   return (
     <Canvas 
-      camera={{ position: [0, 0, cameraZ], fov: 50, near: 180, far: 1800 }}
+      scene={scene}
+      camera={new PerspectiveCamera(50, aspect, 180, 1800)}
       fallback={<div className="w-full h-full flex items-center justify-center text-neutral-500">WebGL is required to view the interactive globe. Please enable Hardware Acceleration in your browser settings.</div>}
     >
-      <fog attach="fog" args={[0xffffff, 400, 2000]} />
+      <WebGLRendererConfig />
       <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
       <directionalLight
         color={globeConfig.directionalLeftLight}
