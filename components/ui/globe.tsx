@@ -235,6 +235,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
     };
   }, [isInitialized, data]);
 
+  return <group ref={groupRef} />;
+}
+
 export function World(props: WorldProps) {
   const { globeConfig } = props;
   
