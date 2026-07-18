@@ -395,7 +395,7 @@ export default function GlobeDemo() {
   ];
 
   return (
-    <div className="relative w-full z-10 overflow-hidden bg-transparent py-16">
+    <div className="hidden md:block relative w-full z-10 overflow-hidden bg-transparent py-16">
       <div className="max-w-7xl mx-auto w-full relative px-4 flex flex-col items-center">
         <motion.div
           initial={{

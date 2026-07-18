@@ -15,6 +15,8 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2560&auto=format&fit=crop',
     details:
       'Built with React and Framer Motion for complex animation execution steps. Engineered a robust PostgreSQL and NextAuth backend for role-based access control.',
+    codeUrl: 'https://github.com/ShivamMalge/Stack-n-Flow',
+    demoUrl: 'https://stack-n-flow.vercel.app'
   },
   {
     id: 2,
@@ -25,6 +27,8 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2560&auto=format&fit=crop',
     details:
       'Bypassed backend authentication via browser console injection, cutting a multi-week task down to 5 minutes. Engineered advanced data parsing and network analysis.',
+    codeUrl: 'https://github.com/ShivamMalge/interview-company-wise-problems',
+    demoUrl: 'https://github.com/ShivamMalge/interview-company-wise-problems'
   },
   {
     id: 3,
@@ -35,6 +39,8 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=2560&auto=format&fit=crop',
     details:
       'Implemented consensus algorithms for coordinated drone behavior. Achieved real-time decision-making with minimal network overhead.',
+    codeUrl: '#',
+    demoUrl: '#'
   },
   {
     id: 4,
@@ -45,6 +51,8 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2560&auto=format&fit=crop',
     details:
       'Eliminates expensive frontend-backend separation by installing @dravya/core via NPM for zero-latency stochastic volatility models. Enables quants and UI engineers to execute complex financial calculations directly on client hardware with native performance.',
+    codeUrl: 'https://github.com/ShivamMalge/Dravya',
+    demoUrl: 'https://github.com/ShivamMalge/Dravya'
   },
   {
     id: 5,
@@ -55,6 +63,8 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2560&auto=format&fit=crop',
     details:
       'Engineered a scalable microservices architecture. Utilized pgvector for document chunking and vector searches, enabling LLMs to instantly draft highly accurate responses strictly based on isolated organizational data.',
+    codeUrl: 'https://github.com/ShivamMalge/AI-Customer-Support-SaaS',
+    demoUrl: 'https://github.com/ShivamMalge/AI-Customer-Support-SaaS'
   },
   {
     id: 6,
@@ -65,6 +75,8 @@ const projects = [
     image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2560&auto=format&fit=crop',
     details:
       'Built a robust data extraction engine to pull recruiter contact information. Created a seamless UI dashboard to review leads and automatically send highly targeted, AI-tailored emails, streamlining the entire job search process.',
+    codeUrl: 'https://github.com/ShivamMalge/Linkedin-Automator',
+    demoUrl: 'https://github.com/ShivamMalge/Linkedin-Automator'
   },
 ]
 
@@ -130,24 +142,28 @@ export function Projects3D() {
 
                 <div className="flex items-center gap-3 mt-auto [transform-style:preserve-3d]">
                   <CardItem translateZ={60}>
-                    <Button
-                      borderRadius="0.5rem"
-                      containerClassName="h-9 w-auto"
-                      className="text-xs px-3 py-1.5 flex items-center gap-2"
-                    >
-                      <Code2 size={14} />
-                      Code
-                    </Button>
+                    <a href={project.codeUrl} target={project.codeUrl !== '#' ? "_blank" : "_self"} rel="noopener noreferrer">
+                      <Button
+                        borderRadius="0.5rem"
+                        containerClassName="h-9 w-auto"
+                        className="text-xs px-3 py-1.5 flex items-center gap-2"
+                      >
+                        <Code2 size={14} />
+                        Code
+                      </Button>
+                    </a>
                   </CardItem>
                   <CardItem translateZ={60}>
-                    <Button
-                      borderRadius="0.5rem"
-                      containerClassName="h-9 w-auto"
-                      className="text-xs px-3 py-1.5 flex items-center gap-2"
-                    >
-                      <ExternalLink size={14} />
-                      Demo
-                    </Button>
+                    <a href={project.demoUrl} target={project.demoUrl !== '#' ? "_blank" : "_self"} rel="noopener noreferrer">
+                      <Button
+                        borderRadius="0.5rem"
+                        containerClassName="h-9 w-auto"
+                        className="text-xs px-3 py-1.5 flex items-center gap-2"
+                      >
+                        <ExternalLink size={14} />
+                        Demo
+                      </Button>
+                    </a>
                   </CardItem>
                 </div>
               </CardBody>
